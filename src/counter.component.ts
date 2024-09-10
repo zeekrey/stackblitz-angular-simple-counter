@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -7,6 +7,10 @@ import { Component, Input } from '@angular/core';
    <div>{{count}}</div>
   `,
 })
-export class Counter {
+export class Counter implements OnChanges {
   @Input({ required: true }) count: number = 0;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Component changed!')
+  }
 }
